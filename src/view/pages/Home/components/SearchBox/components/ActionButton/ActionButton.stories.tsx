@@ -3,7 +3,7 @@ import { PlusIcon, FilterIcon } from '@components'
 import { ActionButton } from './ActionButton.component'
 
 export default {
-  title: 'Pages/Home/SearchBox/ActionButton',
+  title: 'Pages/Home/SearchBox/components/ActionButton',
   component: ActionButton
 } as ComponentMeta<typeof ActionButton>
 
