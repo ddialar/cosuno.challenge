@@ -9,8 +9,8 @@ export default {
 
 const Template: ComponentStory<typeof ActionButton> = (args) => <ActionButton {...args} />
 
-export const Principal = Template.bind({})
-Principal.args = {
+export const Default = Template.bind({})
+Default.args = {
   text: 'Apply filters',
   icon: <FilterIcon className='w-4 h-4 mr-1' />,
   className: 'bg-blue-500 text-white border-blue-500'
