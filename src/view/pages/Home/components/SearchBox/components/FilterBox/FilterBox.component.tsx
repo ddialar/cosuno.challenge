@@ -12,7 +12,7 @@ const FilterItem: FC<FilterItemProps> = ({ text, isSelected, onChange }) => {
   }
 
   return (
-    <li key={text} className='w-[30%] mb-1'>
+    <li key={text} className='w-[30%] md:pr-2 md:w-32 mb-1'>
       <input
         type='checkbox'
         id={text}
@@ -24,14 +24,14 @@ const FilterItem: FC<FilterItemProps> = ({ text, isSelected, onChange }) => {
       <label
         htmlFor={text}
         className={`
-          flex
           p-1
           rounded-md
-          truncate
           border
           border-gray-400
           bg-white
           text-gray-400
+          truncate
+          block
           peer-checked:bg-blue-500
           peer-checked:text-white
           peer-checked:border-blue-500
@@ -51,7 +51,7 @@ interface Props {
 }
 
 export const FilterBox: FC<Props> = ({ availableFilters, selectedFilters, onChange, className = '' }) =>
-  <ul className={`flex flex-wrap justify-between text-sm ${className}`}>
+  <ul className={`flex flex-wrap justify-between md:justify-start w-full text-sm ${className}`}>
     {
       availableFilters.map(filter =>
         <FilterItem

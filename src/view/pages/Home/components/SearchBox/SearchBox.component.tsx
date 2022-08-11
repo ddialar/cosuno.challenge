@@ -4,10 +4,11 @@ import { ActionButton, FilterBox } from './components'
 
 interface Props {
   availableFilters: string[]
+  displayFiltersByDefault?: boolean // 👈 propiedad definida sólo para poder interactuar con los tests
 }
 
-export const SearchBox: FC<Props> = ({ availableFilters }) => {
-  const [showFilter, setShowFilters] = useState<boolean>(false)
+export const SearchBox: FC<Props> = ({ availableFilters, displayFiltersByDefault = false }) => { // 👈
+  const [showFilters, setShowFilters] = useState<boolean>(displayFiltersByDefault) // 👈
   const [searchText, setSearchText] = useState<string>('')
   const [selectedFilters, setSelectedFilters] = useState<Array<string>>([])
   const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' })
@@ -51,7 +52,7 @@ export const SearchBox: FC<Props> = ({ availableFilters }) => {
           type='text'
           id='search-input'
           name='search-input'
-          arial-label='search input'
+          aria-label='search input'
           placeholder='ie: ACME, Inc.'
           className='flex-1 pl-2 border border-white border-l-blue-500 focus:outline-0'
           onChange={handleSearchInput}
@@ -61,29 +62,27 @@ export const SearchBox: FC<Props> = ({ availableFilters }) => {
       {/* Search filters section */}
       <div className='flex flex-col w-full mt-2 p-2 bg-white rounded-md'>
         {
-          showFilter
+          showFilters
             ? <div className='flex flex-col items-start '>
               <ActionButton
                 text='Hide filters'
                 icon={<FilterIcon className='w-4 h-4 mr-1' />}
                 onClick={() => setShowFilters(false)}
                 className='bg-blue-500 text-white border-blue-500'
-                data-bs-toggle='collapse'
               />
               <FilterBox
                 availableFilters={availableFilters}
                 selectedFilters={selectedFilters}
                 onChange={handleFilterSelection}
-                className={`pt-4 ${!showFilter ? 'hidden' : ''}`}
+                className='pt-4'
               />
             </div>
             : <div className='flex items-center w-full'>
               <ActionButton
-                text='Filters'
+                text='Show filters'
                 icon={<PlusIcon className='w-4 h-4 mr-1' />}
                 onClick={() => setShowFilters(true)}
                 className='bg-white text-blue-500 border-blue-500'
-                data-bs-toggle='collapse'
               />
               <span
                 className='flex-1 ml-3 text-sm truncate'
