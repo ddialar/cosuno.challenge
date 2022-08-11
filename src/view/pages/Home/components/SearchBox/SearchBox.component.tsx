@@ -1,46 +1,28 @@
-import { ChangeEvent, useState, useEffect, FC } from 'react'
+import { FC, ChangeEvent, useState } from 'react'
 import { SearchIcon, PlusIcon, FilterIcon } from '@components'
 import { ActionButton, FilterBox } from './components'
 
 interface Props {
   availableFilters: string[]
-  displayFiltersByDefault?: boolean // 👈 propiedad definida sólo para poder interactuar con los tests
+  searchParams: SearchParams
+  onSearchChange: (args: SearchParams) => void
+  displayFiltersByDefault?: boolean
 }
 
-export const SearchBox: FC<Props> = ({ availableFilters, displayFiltersByDefault = false }) => { // 👈
-  const [showFilters, setShowFilters] = useState<boolean>(displayFiltersByDefault) // 👈
-  const [searchText, setSearchText] = useState<string>('')
-  const [selectedFilters, setSelectedFilters] = useState<Array<string>>([])
+export const SearchBox: FC<Props> = ({ availableFilters, searchParams, onSearchChange, displayFiltersByDefault = false }) => { // 👈
+  const [showFilters, setShowFilters] = useState<boolean>(displayFiltersByDefault)
   const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' })
 
-  useEffect(() => {
-    interface requestProps {
-      search: string
-      filters: string[]
-    }
-    const requestCompanies = async (request: requestProps): Promise<unknown[]> => {
-      // TODO Invoke the request service
-      console.log({ request })
-      return []
-    }
-
-    const query = {
-      search: searchText,
-      filters: selectedFilters
-    }
-    requestCompanies(query)
-  }, [searchText, selectedFilters])
-
   const handleSearchInput = ({ target: { value } }: ChangeEvent<HTMLInputElement>): void => {
-    setSearchText(value)
+    onSearchChange({ ...searchParams, search: value })
   }
 
   const handleFilterSelection = (filter: string) => {
-    const result = selectedFilters.includes(filter)
-      ? selectedFilters.filter(checkedFilter => checkedFilter !== filter)
-      : [...selectedFilters, filter]
+    const result = searchParams.filters.includes(filter)
+      ? searchParams.filters.filter(checkedFilter => checkedFilter !== filter)
+      : [...searchParams.filters, filter]
 
-    setSelectedFilters(result)
+    onSearchChange({ ...searchParams, filters: [...result] })
   }
 
   return (
@@ -56,11 +38,11 @@ export const SearchBox: FC<Props> = ({ availableFilters, displayFiltersByDefault
           placeholder='ie: ACME, Inc.'
           className='flex-1 pl-2 border border-white border-l-blue-500 focus:outline-0'
           onChange={handleSearchInput}
-          value={searchText}
+          value={searchParams.search}
         />
       </div>
       {/* Search filters section */}
-      <div className='flex flex-col w-full mt-2 p-2 bg-white rounded-md'>
+      <div role='filters-box' className='flex flex-col w-full mt-2 p-2 bg-white rounded-md'>
         {
           showFilters
             ? <div className='flex flex-col items-start '>
@@ -72,7 +54,7 @@ export const SearchBox: FC<Props> = ({ availableFilters, displayFiltersByDefault
               />
               <FilterBox
                 availableFilters={availableFilters}
-                selectedFilters={selectedFilters}
+                selectedFilters={searchParams.filters}
                 onChange={handleFilterSelection}
                 className='pt-4'
               />
@@ -86,9 +68,9 @@ export const SearchBox: FC<Props> = ({ availableFilters, displayFiltersByDefault
               />
               <span
                 className='flex-1 ml-3 text-sm truncate'
-                arial-label='apply specialities'
+                aria-label='selected specialities'
               >
-                {formatter.format(selectedFilters)}
+                {formatter.format(searchParams.filters)}
               </span>
             </div>
         }

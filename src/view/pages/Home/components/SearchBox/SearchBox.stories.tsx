@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { ComponentStory, ComponentMeta } from '@storybook/react'
 import { SearchBox } from './SearchBox.component'
 
@@ -22,9 +23,16 @@ export default {
 } as ComponentMeta<typeof SearchBox>
 
 export const Default: ComponentStory<typeof SearchBox> = () => {
+  const [searchParams, setSearchParams] = useState<SearchParams>({ search: '', filters: [] })
+  const onSearchChange = (args: SearchParams) => {
+    setSearchParams({ ...args })
+  }
+
   return (
     <SearchBox
       availableFilters={availableFilters}
+      searchParams={searchParams}
+      onSearchChange={onSearchChange}
     />
   )
 }
