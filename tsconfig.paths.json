@@ -5,6 +5,9 @@
       "@components": [
         "src/view/components"
       ],
+      "@layouts": [
+        "src/view/layouts"
+      ],
       "@pages": [
         "src/view/pages"
       ]
