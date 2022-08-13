@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const CompanyCard: FC<Props> = ({ logoUrl, name, city, specialities }) =>
-  <div role='company-card' className='flex max-w-sm bg-white drop-shadow-lg rounded-md'>
+  <div role='company-card' className='flex bg-white drop-shadow-lg rounded-md md:w-[397px]'>
     <Image
       src={logoUrl || '/img/logos/consuno-avatar.webp'}
       width='100%'
@@ -18,7 +18,7 @@ export const CompanyCard: FC<Props> = ({ logoUrl, name, city, specialities }) =>
       alt={`${name} logo`}
     />
     <div className='flex flex-col flex-1 px-3 pt-1 pb-2'>
-      <div aria-label='company-name'>{name}</div>
+      <div aria-label='company-name' className='font-bold'>{name}</div>
       <div aria-label='company-city' className='text-sm'>{city}</div>
       {
         specialities.length
