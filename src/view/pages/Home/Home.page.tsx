@@ -33,16 +33,84 @@ export const HomePage = () => {
           searchParams={searchParams}
           onSearchChange={onSearchChange}
         />
-        <ul className='flex-1 '>
-          <li className='px-4 py-2'>
-            <CompanyCard
-              logoUrl={'/img/logos/monsters-inc-logo.webp'}
-              name={'Monsters, Inc.'}
-              city={'Monstropolis'}
-              specialities={['Energy']}
-            />
-          </li>
-        </ul>
+        <div className='flex-1 relative'>
+          <div className='absolute w-full h-full overflow-y-scroll'>
+            <ul className='block md:flex md:flex-wrap md:justify-between md:px-2 md:py-3'>
+              <li className='px-4 py-2 md:px-2'>
+                <CompanyCard
+                  logoUrl={'/img/logos/monsters-inc-logo.webp'}
+                  name={'Monsters, Inc.'}
+                  city={'Monstropolis'}
+                  specialities={['Energy']}
+                />
+              </li>
+              <li className='px-4 py-2 md:px-2'>
+                <CompanyCard
+                  logoUrl={'/img/logos/monsters-inc-logo.webp'}
+                  name={'Monsters, Inc.'}
+                  city={'Monstropolis'}
+                  specialities={['Energy']}
+                />
+              </li>
+              <li className='px-4 py-2 md:px-2'>
+                <CompanyCard
+                  logoUrl={'/img/logos/monsters-inc-logo.webp'}
+                  name={'Monsters, Inc.'}
+                  city={'Monstropolis'}
+                  specialities={['Energy']}
+                />
+              </li>
+              <li className='px-4 py-2 md:px-2'>
+                <CompanyCard
+                  logoUrl={'/img/logos/monsters-inc-logo.webp'}
+                  name={'Monsters, Inc.'}
+                  city={'Monstropolis'}
+                  specialities={['Energy']}
+                />
+              </li>
+              <li className='px-4 py-2 md:px-2'>
+                <CompanyCard
+                  logoUrl={'/img/logos/monsters-inc-logo.webp'}
+                  name={'Monsters, Inc.'}
+                  city={'Monstropolis'}
+                  specialities={['Energy']}
+                />
+              </li>
+              <li className='px-4 py-2 md:px-2'>
+                <CompanyCard
+                  logoUrl={'/img/logos/monsters-inc-logo.webp'}
+                  name={'Monsters, Inc.'}
+                  city={'Monstropolis'}
+                  specialities={['Energy']}
+                />
+              </li>
+              <li className='px-4 py-2 md:px-2'>
+                <CompanyCard
+                  logoUrl={'/img/logos/monsters-inc-logo.webp'}
+                  name={'Monsters, Inc.'}
+                  city={'Monstropolis'}
+                  specialities={['Energy']}
+                />
+              </li>
+              <li className='px-4 py-2 md:px-2'>
+                <CompanyCard
+                  logoUrl={'/img/logos/monsters-inc-logo.webp'}
+                  name={'Monsters, Inc.'}
+                  city={'Monstropolis'}
+                  specialities={['Energy']}
+                />
+              </li>
+              <li className='px-4 py-2 md:px-2'>
+                <CompanyCard
+                  logoUrl={'/img/logos/monsters-inc-logo.webp'}
+                  name={'Monsters, Inc.'}
+                  city={'Monstropolis'}
+                  specialities={['Energy']}
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
       </main>
       <footer className='flex'>
         Challenge done by...
