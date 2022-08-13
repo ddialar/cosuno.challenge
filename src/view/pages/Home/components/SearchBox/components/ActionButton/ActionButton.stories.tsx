@@ -13,12 +13,12 @@ export const Default = Template.bind({})
 Default.args = {
   text: 'Apply filters',
   icon: <FilterIcon className='w-4 h-4 mr-1' />,
-  className: 'bg-blue-500 text-white border-blue-500'
+  className: 'bg-blue-main text-white border-blue-main'
 }
 
 export const Contrast = Template.bind({})
 Contrast.args = {
   text: 'Add filters',
   icon: <PlusIcon className='w-4 h-4 mr-1' />,
-  className: 'bg-white text-blue-500 border-blue-500'
+  className: 'bg-white text-blue-main border-blue-main'
 }

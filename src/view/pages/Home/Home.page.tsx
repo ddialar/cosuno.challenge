@@ -42,7 +42,6 @@ export const HomePage = () => {
         />
         <CompaniesList companies={companies} />
       </main>
-      {/* TODO Apply the blue-main to the rest of visual compoents whose are using it */}
       {/* TODO Start with the backend side */}
       <Footer />
     </MainLayout>

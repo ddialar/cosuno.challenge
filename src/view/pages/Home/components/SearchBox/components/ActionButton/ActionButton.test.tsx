@@ -8,7 +8,7 @@ describe('ActionButton component', () => {
   const buttonProperties = {
     text: 'Apply filters',
     icon: <FilterIcon aria-label='filter icon' className='w-4 h-4 mr-1' />,
-    className: 'bg-blue-500 text-white border-blue-500',
+    className: 'bg-blue-main text-white border-blue-main',
     onClick: jest.fn()
   }
 

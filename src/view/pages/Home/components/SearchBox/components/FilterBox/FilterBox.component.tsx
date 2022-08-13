@@ -32,9 +32,9 @@ const FilterItem: FC<FilterItemProps> = ({ text, isSelected, onChange }) => {
           text-gray-400
           truncate
           block
-          peer-checked:bg-blue-500
+          peer-checked:bg-blue-main
           peer-checked:text-white
-          peer-checked:border-blue-500
+          peer-checked:border-blue-main
         `}
       >
         {text}

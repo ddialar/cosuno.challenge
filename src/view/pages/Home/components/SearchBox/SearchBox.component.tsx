@@ -26,7 +26,7 @@ export const SearchBox: FC<Props> = ({ availableFilters, searchParams, onSearchC
   }
 
   return (
-    <div className='flex flex-col p-4 bg-blue-500'>
+    <div className='flex flex-col p-4 bg-blue-main'>
       {/* Search input text */}
       <div role='search-box' className='flex items-center p-2 bg-white rounded-md'>
         <SearchIcon className='w-5 h-5 mr-2 text-gray-400' />
@@ -36,7 +36,7 @@ export const SearchBox: FC<Props> = ({ availableFilters, searchParams, onSearchC
           name='search-input'
           aria-label='search input'
           placeholder='ie: ACME, Inc.'
-          className='flex-1 pl-2 border border-white border-l-blue-500 focus:outline-0'
+          className='flex-1 pl-2 border border-white border-l-blue-main focus:outline-0'
           onChange={handleSearchInput}
           value={searchParams.search}
         />
@@ -50,7 +50,7 @@ export const SearchBox: FC<Props> = ({ availableFilters, searchParams, onSearchC
                 text='Hide filters'
                 icon={<FilterIcon className='w-4 h-4 mr-1' />}
                 onClick={() => setShowFilters(false)}
-                className='bg-blue-500 text-white border-blue-500'
+                className='bg-blue-main text-white border-blue-main'
               />
               <FilterBox
                 availableFilters={availableFilters}
@@ -64,7 +64,7 @@ export const SearchBox: FC<Props> = ({ availableFilters, searchParams, onSearchC
                 text='Show filters'
                 icon={<PlusIcon className='w-4 h-4 mr-1' />}
                 onClick={() => setShowFilters(true)}
-                className='bg-white text-blue-500 border-blue-500'
+                className='bg-white text-blue-main border-blue-main'
               />
               <span
                 className='flex-1 ml-3 text-sm truncate'
