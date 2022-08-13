@@ -35,8 +35,6 @@ describe('CompanyCard component', () => {
   })
 
   it('render default logo when it is not provided', () => {
-    jest.mock('next/image', () => ({ src, alt }: { src: string; alt: string }) => <img src={src} alt={alt} />)
-
     const properties: ComponentProps<typeof CompanyCard> = {
       logoUrl: '',
       name: 'Monsters, Inc.',
@@ -49,8 +47,6 @@ describe('CompanyCard component', () => {
     const logo = getByAltText(`${properties.name} logo`)
     expect(logo).toBeInTheDocument()
     expect(logo).toHaveProperty('src', expectedResult)
-
-    jest.resetAllMocks()
   })
 
   it('specialities section is not rendered when they are not provided', () => {
