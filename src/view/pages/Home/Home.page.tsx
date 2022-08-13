@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { MainLayout } from '@layouts'
 import { Header } from '@components'
-// import { SearchBox, CompanyCard } from './components'
 import { SearchBox, CompaniesList } from './components'
 
 const availableFilters = [
@@ -43,8 +42,12 @@ export const HomePage = () => {
         />
         <CompaniesList companies={companies} />
       </main>
-      <footer className='flex'>
-        Challenge done by...
+      <footer className='flex justify-center items-center h-[45px] bg-blue-main text-white text-sm'>
+         Challenge coded by
+        <a href="http://linkedin.com/in/ddialar" target="_blank" rel="noopener noreferrer">
+          <span className='ml-1 font-bold'>Dailos Rafael Díaz Lara</span>
+
+        </a>
       </footer>
     </MainLayout>
   )
