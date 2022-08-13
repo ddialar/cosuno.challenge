@@ -1,12 +1,7 @@
 import type { FC } from 'react'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
-interface Props {
-  logoUrl: string | string | StaticImageData
-  name: string
-  city: string
-  specialities: Array<string>
-}
+interface Props extends CompanyData {}
 
 export const CompanyCard: FC<Props> = ({ logoUrl, name, city, specialities }) =>
   <div role='company-card' className='flex bg-white drop-shadow-lg rounded-md md:w-[397px]'>
