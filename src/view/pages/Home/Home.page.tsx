@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { MainLayout } from '@layouts'
 import { Header, Footer } from '@components'
 import { SearchBox, CompaniesList } from './components'
+// REFACTOR Remove this import!!!
+import { companyFixtures } from '@fixtures'
 
 const availableFilters = [
   'Excavation',
@@ -10,7 +12,7 @@ const availableFilters = [
   'Bricklaying',
   'Stonemasonry',
   'Carpentry',
-  'Joinery',
+  'Fencer',
   'Demolition',
   'Painting',
   'Decorating',
@@ -18,12 +20,8 @@ const availableFilters = [
   'Steeplejacking'
 ]
 
-const companies = Array<CompanyData>(10).fill({
-  logoUrl: '/img/logos/monsters-inc-logo.webp',
-  name: 'Monsters, Inc.',
-  city: 'Monstropolis',
-  specialities: ['Energy']
-})
+// REFACTOR Remove this initialization
+const companies = [...companyFixtures]
 
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useState<SearchParams>({ search: '', filters: [] })
