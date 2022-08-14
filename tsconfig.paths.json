@@ -5,11 +5,26 @@
       "@components": [
         "src/view/components"
       ],
+      "@controllers": [
+        "src/infrastructure/controllers"
+      ],
+      "@errors": [
+        "src/infrastructure/errors"
+      ],
+      "@fixtures": [
+        "src/test/fixtures"
+      ],
+      "@handlers": [
+        "src/infrastructure/handlers"
+      ],
       "@layouts": [
         "src/view/layouts"
       ],
       "@pages": [
         "src/view/pages"
+      ],
+      "@repositories": [
+        "src/infrastructure/repositories"
       ]
     }
   }
