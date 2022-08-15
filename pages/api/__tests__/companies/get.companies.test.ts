@@ -6,7 +6,7 @@ import handleCompanies from '../../companies'
 
 const { OK } = StatusCodes
 
-const configureMockedRequest = ({ method, query }: { method: RequestMethod; query: SearchParams }) =>
+const configureMockedRequest = ({ method, query }: { method: RequestMethod; query: { search: string; filters: string }}) =>
   createMocks<NextApiRequest, NextApiResponse<CompanyData[]>>({ method, query })
 
 describe('[GET] /api/companies', () => {
@@ -15,7 +15,7 @@ describe('[GET] /api/companies', () => {
       method: 'GET',
       query: {
         search: '',
-        filters: []
+        filters: ''
       }
     })
     const expectedResult = companyFixtures.length
@@ -34,7 +34,7 @@ describe('[GET] /api/companies', () => {
       method: 'GET',
       query: {
         search: selectedCompany.name.substring(1, 3),
-        filters: []
+        filters: ''
       }
     })
     const expectedResult = [selectedCompany]
@@ -52,7 +52,7 @@ describe('[GET] /api/companies', () => {
       method: 'GET',
       query: {
         search: 'NonValidSearchParam',
-        filters: []
+        filters: ''
       }
     })
     const expectedResult = 0
@@ -70,7 +70,7 @@ describe('[GET] /api/companies', () => {
       method: 'GET',
       query: {
         search: '',
-        filters: []
+        filters: ''
       }
     })
     const expectedResult = companyFixtures.length
@@ -83,49 +83,45 @@ describe('[GET] /api/companies', () => {
     expect(result).toHaveLength(expectedResult)
   })
 
-  // FIXME the 'query' type definition in the mocked request configuration due to the client send it as a plain string, not as an object.
-  it.todo('retieve companies filtered by specialities')
-  // it('retieve companies filtered by specialities', async () => {
-  //   const filters = 'Scaffolding,Demolition'
-  //   const { req, res } = configureMockedRequest({
-  //     method: 'GET',
-  //     query: {
-  //       search: '',
-  //       filters
-  //     }
-  //   })
-  //   const expectedResult = companyFixtures.filter(({ specialities }) => specialities.some(speciality => filters.includes(speciality)))
+  it('retieve companies filtered by specialities', async () => {
+    const filters = 'Scaffolding,Demolition'
+    const { req, res } = configureMockedRequest({
+      method: 'GET',
+      query: {
+        search: '',
+        filters
+      }
+    })
+    const expectedResult = companyFixtures.filter(({ specialities }) => specialities.some(speciality => filters.includes(speciality)))
 
-  //   await handleCompanies(req, res)
+    await handleCompanies(req, res)
 
-  //   expect(res._getStatusCode()).toBe(OK)
+    expect(res._getStatusCode()).toBe(OK)
 
-  //   const result = res._getJSONData() as CompanyData[]
-  //   expect(result).toHaveLength(expectedResult.length)
+    const result = res._getJSONData() as CompanyData[]
+    expect(result).toHaveLength(expectedResult.length)
 
-  //   result.forEach(company => {
-  //     const expectedCompany = expectedResult.find(({ name }) => company.name === name)
-  //     expect(company).toStrictEqual(expectedCompany)
-  //   })
-  // })
+    result.forEach(company => {
+      const expectedCompany = expectedResult.find(({ name }) => company.name === name)
+      expect(company).toStrictEqual(expectedCompany)
+    })
+  })
 
-  // FIXME the 'query' type definition in the mocked request configuration due to the client send it as a plain string, not as an object.
-  it.todo('no companies retrieved when specialities param does not match')
-  // it('no companies retrieved when specialities param does not match', async () => {
-  //   const { req, res } = configureMockedRequest({
-  //     method: 'GET',
-  //     query: {
-  //       search: '',
-  //       filters: ['NonValidSpeciality']
-  //     }
-  //   })
-  //   const expectedResult = 0
+  it('no companies retrieved when specialities param does not match', async () => {
+    const { req, res } = configureMockedRequest({
+      method: 'GET',
+      query: {
+        search: '',
+        filters: 'NonValidSpeciality'
+      }
+    })
+    const expectedResult = 0
 
-  //   await handleCompanies(req, res)
+    await handleCompanies(req, res)
 
-  //   expect(res._getStatusCode()).toBe(OK)
+    expect(res._getStatusCode()).toBe(OK)
 
-  //   const result = res._getJSONData() as CompanyData[]
-  //   expect(result).toHaveLength(expectedResult)
-  // })
+    const result = res._getJSONData() as CompanyData[]
+    expect(result).toHaveLength(expectedResult)
+  })
 })
