@@ -1,13 +1,13 @@
-import { mapFromCompanySearchParamsFromRawToController } from '../company.mappers'
+import { mapCompanySearchParamsFromRawToController } from '../company.mappers'
 
-describe('Mappers - mapFromCompanySearchParamsFromRawToController', () => {
+describe('Mappers - mapCompanySearchParamsFromRawToController', () => {
   it('works when no arguments are provided', () => {
     const args = {}
     const expectedResult = {
       search: '',
       filters: []
     }
-    const result = mapFromCompanySearchParamsFromRawToController(args)
+    const result = mapCompanySearchParamsFromRawToController(args)
 
     expect(result).toStrictEqual(expectedResult)
   })
@@ -21,7 +21,7 @@ describe('Mappers - mapFromCompanySearchParamsFromRawToController', () => {
       search: 'testing',
       filters: ['test 1', 'test 2']
     }
-    const result = mapFromCompanySearchParamsFromRawToController(args)
+    const result = mapCompanySearchParamsFromRawToController(args)
 
     expect(result).toStrictEqual(expectedResult)
   })
