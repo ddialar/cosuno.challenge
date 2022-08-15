@@ -20,6 +20,9 @@
       "@layouts": [
         "src/view/layouts"
       ],
+      "@mappers": [
+        "src/infrastructure/mappers"
+      ],
       "@pages": [
         "src/view/pages"
       ],
