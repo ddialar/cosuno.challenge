@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req
   if (method && method in actions) {
     const { handler } = actions[method as keyof typeof actions]
-    return await handler(req, res)
+    return handler(req, res)
   }
   throw new MethodNotAllowedError()
 }
