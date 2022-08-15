@@ -1,5 +1,5 @@
 import { MainLayout } from '@layouts'
-import { Header, Footer, EmojiSadIcon, Loading } from '@components'
+import { Header, Footer, Loading, SadMessage } from '@components'
 import { useCompany } from '@hooks'
 import { SearchBox, CompaniesList } from './components'
 
@@ -35,13 +35,10 @@ export const HomePage = () => {
         />
         {
           isLoading
-            ? <Loading text='loading companies' />
+            ? <Loading text={'loading companies'} />
             : companies && companies.length
               ? <CompaniesList companies={companies} />
-              : <div className={'flex flex-col flex-1 justify-center items-center text-gray-500 text-xl'}>
-                <EmojiSadIcon className='w-10 h-10' />
-                No companies found
-              </div>
+              : <SadMessage text={'No companies found'} />
         }
       </main>
       <Footer />
