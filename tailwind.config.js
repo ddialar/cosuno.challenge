@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         'blue-main': '#265ac9',
         'gray-main': '#f8fafc'
+      },
+      maxWidth: {
+        container: '1260px'
       }
     }
   },

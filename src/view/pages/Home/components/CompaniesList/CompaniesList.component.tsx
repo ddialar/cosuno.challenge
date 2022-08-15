@@ -6,12 +6,12 @@ interface Props {
 }
 
 export const CompaniesList: FC<Props> = ({ companies }) =>
-  <div className='flex-1 relative'>
-    <div className='absolute w-full h-full overflow-y-scroll'>
-      <ul className='block py-2 md:flex md:flex-wrap md:justify-between md:items-stretch md:px-2 md:py-3'>
+  <div className='flex flex-1 relative'>
+    <div className='flex justify-center absolute w-full h-full overflow-y-scroll'>
+      <ul className='block py-2 md:flex md:flex-wrap md:justify-between md:items-stretch md:self-start md:px-4 md:py-3 md:max-w-container'>
         {
           companies.map((company, index) =>
-            <li key={`${company.name} ${index}`} className='px-4 py-2 md:px-2'>
+            <li key={`${company.name} ${index}`} className='px-4 py-2 md:px-0'>
               <CompanyCard {...company} />
             </li>
           )
