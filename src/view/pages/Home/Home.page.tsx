@@ -33,13 +33,9 @@ export const HomePage = () => {
           searchParams={searchParams}
           onSearchChange={onSearchChange}
         />
-        {
-          isLoading
-            ? <Loading text={'loading companies'} />
-            : companies && companies.length
-              ? <CompaniesList companies={companies} />
-              : <SadMessage text={'No companies found'} />
-        }
+        { !isLoading && companies?.length ? <CompaniesList companies={companies} /> : null }
+        { !isLoading && !companies?.length ? <SadMessage text={'No companies found'} /> : null }
+        { isLoading ? <Loading text={'loading companies'} /> : null }
       </main>
       <Footer />
     </MainLayout>
