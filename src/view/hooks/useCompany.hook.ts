@@ -21,6 +21,6 @@ export const useCompany = () => {
     companies,
     searchParams,
     setSearchParams,
-    error
+    isLoading: !error && !companies
   }
 }
