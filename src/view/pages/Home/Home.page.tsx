@@ -1,7 +1,6 @@
-import { useState } from 'react'
-import useSWR from 'swr'
 import { MainLayout } from '@layouts'
 import { Header, Footer } from '@components'
+import { useCompany } from '@hooks'
 import { SearchBox, CompaniesList } from './components'
 
 const availableFilters = [
@@ -20,12 +19,10 @@ const availableFilters = [
 ]
 
 export const HomePage = () => {
-  const [searchParams, setSearchParams] = useState<SearchParams>({ search: '', filters: [] })
+  const { companies, searchParams, setSearchParams } = useCompany()
   const onSearchChange = (args: SearchParams) => {
     setSearchParams({ ...args })
   }
-
-  const { data: companies } = useSWR(['/api/companies', searchParams])
 
   return (
     <MainLayout>

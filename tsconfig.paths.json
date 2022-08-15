@@ -17,6 +17,9 @@
       "@handlers": [
         "src/infrastructure/handlers"
       ],
+      "@hooks": [
+        "src/view/hooks"
+      ],
       "@layouts": [
         "src/view/layouts"
       ],
