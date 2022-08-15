@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import useSWR from 'swr'
+import { mapCompanyFromApiToClient } from '@mappers'
 
-const fetcher = async (...args: [string, Record<string, string | ReadonlyArray<string>> | undefined]) => {
+const fetcher = async (...args: [string, Record<string, string | ReadonlyArray<string>> | undefined]): Promise<Array<CompanyData>> => {
   const [rawUrl, queryParams] = args
   // @ts-ignore
   const queryString = queryParams ? `?${(new URLSearchParams(queryParams)).toString()}` : ''
   const url = `${rawUrl}${queryString}`
 
-  return await fetch(url).then(res => res.json())
+  const result = await fetch(url).then(res => res.json())
+
+  return result && result.length ? result.map(mapCompanyFromApiToClient) : []
 }
 
 export const useCompany = () => {
