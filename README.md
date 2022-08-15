@@ -59,7 +59,7 @@ I have implemented a system of path aliases for the import instructions, based o
 Some tools used on this repository are next:
 
 -   📦 `NextJS` as framework for the application.
--   ✉️ `SWR` as requests and cache memory manager.
+-   ✉️ `SWR` for data fetching and cache memory manager.
 -   💅 `TailwindCSS` as styling library.
 -   🧪 `Jest` for unit testing and `Testing Library` for components testing.
 -   📕 `Storybook` for components documentation.
