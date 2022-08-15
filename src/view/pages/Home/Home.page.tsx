@@ -1,9 +1,8 @@
 import { useState } from 'react'
+import useSWR from 'swr'
 import { MainLayout } from '@layouts'
 import { Header, Footer } from '@components'
 import { SearchBox, CompaniesList } from './components'
-// REFACTOR Remove this import!!!
-import { companyFixtures } from '@fixtures'
 
 const availableFilters = [
   'Excavation',
@@ -20,14 +19,13 @@ const availableFilters = [
   'Steeplejacking'
 ]
 
-// REFACTOR Remove this initialization
-const companies = [...companyFixtures]
-
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useState<SearchParams>({ search: '', filters: [] })
   const onSearchChange = (args: SearchParams) => {
     setSearchParams({ ...args })
   }
+
+  const { data: companies } = useSWR(['/api/companies', searchParams])
 
   return (
     <MainLayout>
@@ -38,9 +36,12 @@ export const HomePage = () => {
           searchParams={searchParams}
           onSearchChange={onSearchChange}
         />
-        <CompaniesList companies={companies} />
+        {
+          companies
+            ? <CompaniesList companies={companies} />
+            : <span>Loading...</span>
+        }
       </main>
-      {/* TODO Start with the backend side */}
       <Footer />
     </MainLayout>
   )
