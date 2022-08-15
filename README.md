@@ -228,6 +228,7 @@ npm run build
   - Select/deselect specialities directly from the filtered company cards.
   - Retrieve the defined specialities directly from the API via a specific custom hook.
   - Implement Cypress for tests E2E.
+  - Improve the accessibility (a11n).
   - Apply internationalization (i18n).
 
 - 🗄 BackEnd side
