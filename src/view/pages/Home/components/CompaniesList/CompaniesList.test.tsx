@@ -16,7 +16,7 @@ const mockedCompanyData = {
 const companies = Array<CompanyData>(amountOfCompanies).fill(mockedCompanyData)
 
 describe('CompaniesList component', () => {
-  it('render success', async () => {
+  it('renders successfully', async () => {
     const properties: ComponentProps<typeof CompaniesList> = {
       companies
     }

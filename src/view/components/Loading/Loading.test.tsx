@@ -7,7 +7,7 @@ const setup = (properties: ComponentProps<typeof Loading>) =>
   render(<Loading {...properties} />)
 
 describe('Loading component', () => {
-  it('render success', () => {
+  it('renders successfully', () => {
     const testingText = 'Testing Text'
     const { getByLabelText } = setup({ text: testingText })
 

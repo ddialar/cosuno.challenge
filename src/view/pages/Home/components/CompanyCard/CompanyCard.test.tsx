@@ -7,7 +7,7 @@ const setup = (properties: ComponentProps<typeof CompanyCard>) =>
   render(<CompanyCard {...properties} />)
 
 describe('CompanyCard component', () => {
-  it('render success', () => {
+  it('renders successfully', () => {
     const properties: ComponentProps<typeof CompanyCard> = {
       logoUrl: '/img/logos/consuno-avatar.webp',
       name: 'Monsters, Inc.',
@@ -34,7 +34,7 @@ describe('CompanyCard component', () => {
     )
   })
 
-  it('render default logo when it is not provided', () => {
+  it('renders default logo when it is not provided', () => {
     const properties: ComponentProps<typeof CompanyCard> = {
       logoUrl: '',
       name: 'Monsters, Inc.',
@@ -49,7 +49,7 @@ describe('CompanyCard component', () => {
     expect(logo).toHaveProperty('src', expectedResult)
   })
 
-  it('specialities section is not rendered when they are not provided', () => {
+  it('does not render specialities section when they are not provided', () => {
     const properties: ComponentProps<typeof CompanyCard> = {
       logoUrl: '/img/logos/consuno-avatar.webp',
       name: 'Monsters, Inc.',

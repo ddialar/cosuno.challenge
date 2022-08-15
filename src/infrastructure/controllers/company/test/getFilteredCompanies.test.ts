@@ -2,7 +2,7 @@ import { getFilteredCompanies } from '../company.controllers'
 import { companyFixtures } from '@fixtures'
 
 describe('Company controller - getFilteredCompanies', () => {
-  it('retrieve companies when the search string is empty', async () => {
+  it('retrieves companies when the search string is empty', async () => {
     const search = ''
     const filters: Array<string> = []
     const expectedResult = companyFixtures.length
@@ -11,7 +11,7 @@ describe('Company controller - getFilteredCompanies', () => {
     expect(result).toHaveLength(expectedResult)
   })
 
-  it('retieve companies when the search param matches with persisted companies', async () => {
+  it('retieves companies when the search param matches with persisted companies', async () => {
     const { length, [length - 1]: selectedCompany } = companyFixtures
     const search = selectedCompany.name.substring(1, 3)
     const filters: Array<string> = []
@@ -21,7 +21,7 @@ describe('Company controller - getFilteredCompanies', () => {
     expect(result).toStrictEqual(expectedResult)
   })
 
-  it('no companies retrieved when the search param does not match', async () => {
+  it('does not retrieve companies when the search param does not match', async () => {
     const search = 'NonValidSearchParam'
     const filters: Array<string> = []
     const expectedResult = 0
@@ -30,7 +30,7 @@ describe('Company controller - getFilteredCompanies', () => {
     expect(result).toHaveLength(expectedResult)
   })
 
-  it('retieve companies when no specializations are provided', async () => {
+  it('retieves companies when no specializations are provided', async () => {
     const search = ''
     const filters: Array<string> = []
     const expectedResult = companyFixtures.length
@@ -39,7 +39,7 @@ describe('Company controller - getFilteredCompanies', () => {
     expect(result).toHaveLength(expectedResult)
   })
 
-  it('retieve companies filtered by specializations', async () => {
+  it('retieves companies filtered by specializations', async () => {
     const search = ''
     const filters: Array<string> = ['Scaffolding', 'Demolition']
     const expectedResult = companyFixtures.filter(({ specialities }) => specialities.some(speciality => filters.includes(speciality)))
@@ -53,7 +53,7 @@ describe('Company controller - getFilteredCompanies', () => {
     })
   })
 
-  it('no companies retrieved when specialization param does not match', async () => {
+  it('does noy retrieve companies when specialization param does not match', async () => {
     const search = ''
     const filters: Array<string> = ['NonValidSpeciality']
     const expectedResult = 0

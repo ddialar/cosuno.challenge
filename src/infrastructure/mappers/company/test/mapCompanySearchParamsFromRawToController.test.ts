@@ -1,7 +1,7 @@
 import { mapCompanySearchParamsFromRawToController } from '../company.mappers'
 
 describe('Mappers - mapCompanySearchParamsFromRawToController', () => {
-  it('works when no arguments are provided', () => {
+  it('should map providing no arguments', () => {
     const args = {}
     const expectedResult = {
       search: '',
@@ -12,7 +12,7 @@ describe('Mappers - mapCompanySearchParamsFromRawToController', () => {
     expect(result).toStrictEqual(expectedResult)
   })
 
-  it('works when arguments are provided', () => {
+  it('should map providing arguments', () => {
     const args = {
       search: 'testing',
       filters: 'test 1,test 2'

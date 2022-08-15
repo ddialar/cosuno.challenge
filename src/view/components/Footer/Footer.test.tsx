@@ -7,7 +7,7 @@ const setup = () =>
   render(<Footer />)
 
 describe('Footer component', () => {
-  it('render success', () => {
+  it('renders successfully', () => {
     const { getByText, getByRole } = setup()
 
     const plainText = getByText('Challenge coded by')

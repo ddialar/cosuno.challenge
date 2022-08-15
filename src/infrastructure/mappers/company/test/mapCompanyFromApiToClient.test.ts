@@ -1,7 +1,7 @@
 import { mapCompanyFromApiToClient } from '../company.mappers'
 
 describe('Mappers - mapCompanyFromApiToClient', () => {
-  it('works when no arguments are provided', () => {
+  it('should map providing no arguments', () => {
     const args = undefined
     const expectedResult = {
       logoUrl: '/img/logos/cosuno-avatar.webp',
@@ -14,7 +14,7 @@ describe('Mappers - mapCompanyFromApiToClient', () => {
     expect(result).toStrictEqual(expectedResult)
   })
 
-  it('works when arguments are provided', () => {
+  it('should map providing no arguments', () => {
     const args = {
       logoUrl: '/path/to/image.webp',
       name: 'Testing Company',

@@ -7,7 +7,7 @@ const setup = (properties: ComponentProps<typeof SadMessage>) =>
   render(<SadMessage {...properties} />)
 
 describe('SadMessage component', () => {
-  it('render success', () => {
+  it('renders successfully', () => {
     const testingText = 'Testing Text'
     const { getByLabelText } = setup({ text: testingText })
 

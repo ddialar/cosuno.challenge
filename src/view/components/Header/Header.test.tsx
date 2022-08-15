@@ -4,7 +4,7 @@ import { Header } from './Header.component'
 import '@testing-library/jest-dom'
 
 describe('Header component', () => {
-  it('render success', () => {
+  it('renders successfully', () => {
     const { getByAltText, getByText } = render(<Header />)
 
     const image = getByAltText('Cosuno logo')

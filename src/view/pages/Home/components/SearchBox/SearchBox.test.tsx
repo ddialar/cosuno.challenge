@@ -22,7 +22,7 @@ const setup = (properties: ComponentProps<typeof SearchBox>) =>
   render(<SearchBox {...properties} />)
 
 describe('SearchBox component', () => {
-  it('type searching text', () => {
+  it('types in the searching text box', () => {
     const value = 'ACME, Inc.'
     const properties: ComponentProps<typeof SearchBox> = {
       availableFilters,
@@ -39,7 +39,7 @@ describe('SearchBox component', () => {
     expect(properties.onSearchChange).toHaveBeenCalledWith({ search: value, filters: [] })
   })
 
-  it('display filters panel on demand', () => {
+  it('displays filters panel on demand', () => {
     const properties: ComponentProps<typeof SearchBox> = {
       availableFilters,
       searchParams: {
@@ -61,7 +61,7 @@ describe('SearchBox component', () => {
     expect(screen.queryByText('Show filters')).not.toBeInTheDocument()
   })
 
-  it('hide filters panel on demand', () => {
+  it('hides filters panel on demand', () => {
     const properties: ComponentProps<typeof SearchBox> = {
       availableFilters,
       searchParams: {
@@ -84,7 +84,7 @@ describe('SearchBox component', () => {
     expect(screen.queryByText('Hide filters')).not.toBeInTheDocument()
   })
 
-  it('select filter', () => {
+  it('selects a filter', () => {
     const properties: ComponentProps<typeof SearchBox> = {
       availableFilters,
       searchParams: { search: '', filters: [] },
@@ -98,7 +98,7 @@ describe('SearchBox component', () => {
     expect(properties.onSearchChange).toHaveBeenCalledWith({ search: '', filters: ['Excavation'] })
   })
 
-  it('display selected filters summary', () => {
+  it('displays selected filters summary', () => {
     const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' })
     const properties: ComponentProps<typeof SearchBox> = {
       availableFilters,
