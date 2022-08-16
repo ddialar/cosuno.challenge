@@ -3,25 +3,19 @@
 # Cosuno coding challenge
 
 ## 📝 Challenge description
-Create a simple React application that shows a list of construction companies, each with the
-following information:
+Create a simple React application that shows a list of construction companies, each with the following information:
 - Company name
 - Logo (you may use a placeholder image, e.g. using https://placekitten.com/)
 - Specialties (e.g. Excavation, Plumbing, Electrical)
 - City
 
 The following should be possible:
-- Search for a company by typing into a search field. The search term gets matched only
-against the company name and the list of companies is filtered based on the search term
-in real time as the user is typing.
-- Filter the list using a set of checkboxes to include only those companies which offer a
-particular speciality (e.g. only Plumbing).
+- Search for a company by typing into a search field. The search term gets matched only against the company name and the list of companies is filtered based on the search term in real time as the user is typing.
+- Filter the list using a set of checkboxes to include only those companies which offer a particular speciality (e.g. only Plumbing).
 
-Create a simple API based on Node.js that returns the list of companies to the frontend. The
-API can read the data from a simple JSON source, no database setup is required.
+Create a simple API based on Node.js that returns the list of companies to the frontend. The API can read the data from a simple JSON source, no database setup is required.
 
-In addition, make a list of ideas on how you would improve this application if you had more time
-to work on it.
+In addition, make a list of ideas on how you would improve this application if you had more time to work on it.
 
 ## 🏗 Challenge implementation
 
@@ -29,10 +23,10 @@ to work on it.
 
 -   [Description](#description)
 -   [System requirements](#requirements)
--   [Code architehture](#architehture)
-    -   [FrontEnd side](#architehture-front)
-    -   [BackEnd side](#architehture-back)
-    -   [Other elements](#architehture-other)
+-   [Code architecture](#architecture)
+    -   [FrontEnd side](#architecture-front)
+    -   [BackEnd side](#architecture-back)
+    -   [Other elements](#architecture-other)
 -   [Commands guide](#commands)
     -   [Switch Node version](#commands-switch-node)
     -   [Modules installation process](#commands-installation)
@@ -46,7 +40,7 @@ to work on it.
 
 This repository is based on NextJS, using TypeScript.
 
-I have implement the whole solution into the home page and the companies data is retrieve from the API.
+I have implemented the whole solution into the home page and the companies data is retrieve from the API.
 
 The code implement the OR filtering strategy. It means that the API will return companies which match with some of the provided filtering specialities. In addition, the code filters first by the search text introduced in the text field and then, the result obtained of this initial screening, is provided to the second filter where are analyzed the provided specialities.
 
@@ -80,7 +74,7 @@ In addition, it's advisable to have next:
 -   Web browser (recomended Google Chrome 88.0)
 -   Code editor (recomended VSCode 1.52.1)
 
-### <a id="architehture"></a>🏛 Code architehture
+### <a id="architecture"></a>🏛 Code architecture
 
 The code is organized following the guidelines indicated by the NextJS official documentation.
 
@@ -90,13 +84,13 @@ The static files, such as the company logos, will be placed into the `/public` f
 
 Finally, the rest of the application code will be located into the `/src` folder. At this last folder I have distributed the code in different layers which I explain in the next sections:
 
-#### <a id="architehture-front"></a>🖥 FrontEnd side
+#### <a id="architecture-front"></a>🖥 FrontEnd side
 
 The whole FrontEnd code is placed into the `/src/view` layer.
 
-I have done it this way in prder to provide a decoupling level enough in order to ensure the scalability and maintainability of this part of the application.
+I have done it this way in order to provide a decoupling level enough to ensure the scalability and maintainability of this part of the application.
 
-Into this folder, we can find seceral directories with the next function:
+Into this folder, we can find several directories with the next function:
 
 - 📂 `components`
   
@@ -118,7 +112,7 @@ Into this folder, we can find seceral directories with the next function:
 
 - 📂 `pages`
   
-  In this folder I define the pages (just one page in the case of this application) as single components that are imported in the specific file into the `/pages` at the root of the proyect.
+  In this folder I define the pages (just one page in the case of this application) as single components that are imported in the specific file into the `/pages` at the root of the project.
 
   This way I am able to decouple the visual application from the used framework, NextJS in this case. This provides me the option of migrating from NextJS to other project configuration, `create-react-app` for instance, easily. 
 
@@ -128,7 +122,7 @@ Into this folder, we can find seceral directories with the next function:
   
   This folder contains the only styles file where there are defined the TailwindCSS imports.
 
-#### <a id="architehture-back"></a>🗄 BackEnd side
+#### <a id="architecture-back"></a>🗄 BackEnd side
 
 The whole BackEnd code is placed into the `/src/infrastructure` layer.
 
@@ -158,7 +152,7 @@ Into this folder, we can find seceral directories with the next function:
   
   Due to there are some cases where I have to ensure the data has a specific structure and content, I reach this goal via the implementation of the `mapper` patter.
 
-#### <a id="architehture-other"></a>⚙ Other elements
+#### <a id="architecture-other"></a>⚙ Other elements
 
 There are several common folders/layers which are placed into the `/src` folder. These elements are next:
 
@@ -221,7 +215,7 @@ npm run build
 ### <a id="improvements"></a>📕 Additional improvements
 
 - 🖥 FrontEnd side
-  - Inlcude a clear button in the right of the text filed in order to delete the whole typed text.
+  - Include a clear button in the right of the text field in order to delete the whole typed text.
   - Add buttons in the filters section in order to select/deselect all filters.
   - Add options in the filters section in order to selected the filtering strategy (AND | OR).
   - In the retrieved company cards, highlight its specialities which match with the included into the filters selection.
